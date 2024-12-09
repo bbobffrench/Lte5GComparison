@@ -123,9 +123,9 @@ main(int argc, char **argv){
 	}
 	else if(simulationType == "IoT"){
 		cout << "--- 5G Results ---" << endl;
-		NrVideostream(ueCount, packetCount);
+		NrIot(ueCount, packetCount);
 		cout << endl << "--- LTE results ---" << endl;
-		LteVideostream(ueCount, packetCount);
+		LteIot(ueCount, packetCount);
 	}
 	else cout << "Invalid simulation type, not running" << endl;
 

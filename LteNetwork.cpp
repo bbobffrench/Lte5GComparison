@@ -25,7 +25,7 @@ LteNetwork::LteNetwork(uint16_t port, uint16_t ueCount, TypeId socketType){
 	epcH = CreateObject<PointToPointEpcHelper>();
 	lteH = CreateObject<LteHelper>();
 	lteH->SetEpcHelper(epcH);
-	lteH->SetPathlossModelType(LogDistancePropagationLossModel::GetTypeId());
+	//lteH->SetPathlossModelType(LogDistancePropagationLossModel::GetTypeId());
 
 	NetDeviceContainer enbDev = lteH->InstallEnbDevice(enbNode);
 	NetDeviceContainer ueDevs = lteH->InstallUeDevice(ueNodes);
