@@ -45,7 +45,14 @@ LteVideostream(uint16_t ueCount, uint32_t packetCount){
 		network.GetUeAddrs()
 	);
 	traffic.SetPacketIntervalFunction([]() -> double { return 15e-3; });
-	traffic.SetPacketSizeFunction([]() -> uint16_t { return 1500; });
+	traffic.SetPacketSizeFunction([]() -> uint16_t {
+		static uint8_t i = 0;
+		if(++i == 30){
+			i = 0;
+			return 1500;
+		}
+		return 1000;
+	});
 	traffic.RunSimulation();
 }
 
@@ -60,7 +67,14 @@ NrVideostream(uint16_t ueCount, uint32_t packetCount){
 		network.GetUeAddrs()
 	);
 	traffic.SetPacketIntervalFunction([]() -> double { return 15e-3; });
-	traffic.SetPacketSizeFunction([]() -> uint16_t { return 1500; });
+	traffic.SetPacketSizeFunction([]() -> uint16_t {
+		static uint8_t i = 0;
+		if(++i == 30){
+			i = 0;
+			return 1500;
+		}
+		return 1000;
+	});
 	traffic.RunSimulation();
 }
 
@@ -75,7 +89,7 @@ LteIot(uint16_t ueCount, uint32_t packetCount){
 		network.GetUeAddrs()
 	);
 	traffic.SetPacketIntervalFunction([]() -> double { return 1; });
-	traffic.SetPacketSizeFunction([]() -> uint16_t { return 50; });
+	traffic.SetPacketSizeFunction([]() -> uint16_t { return 52; });
 	traffic.RunSimulation();
 }
 
@@ -90,7 +104,7 @@ NrIot(uint16_t ueCount, uint32_t packetCount){
 		network.GetUeAddrs()
 	);
 	traffic.SetPacketIntervalFunction([]() -> double { return 1; });
-	traffic.SetPacketSizeFunction([]() -> uint16_t { return 50; });
+	traffic.SetPacketSizeFunction([]() -> uint16_t { return 52; });
 	traffic.RunSimulation();
 }
 
